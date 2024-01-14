@@ -1,1 +1,44 @@
-# hw
+<a name=top><br>
+  <p align=center>&nbsp;<a href="/README.md#top">home</a> ::
+  <a href="/docs/syllabus.md#top">syllabus</a> ::
+  <a href="https://docs.google.com/spreadsheets/d/16yxmklx4zvmfAHE7QocOQZZ4v4UxD5ktJHWMJEjBcMI/edit#gid=0">groups</a> ::
+  <a href="/LICENSE.md#top">&copy;&nbsp;2024</a>, <a href="http:/timm.fyi">Tim Menzies</a><br>
+
+### Week2
+
+Code up just a  little bit of a sequential model optimizer 
+(for  this week, just the data inut routines)
+
+- Read code you will be implementing [^gatecode]
+- Read the appendix of [^gatedoc] (a tour of Lua)
+- Read pages 4 to 15 of [^gatedoc]
+- Grab a sample data file https://github.com/timm/lo/blob/main/data/auto93.csv
+
+Get some of [^gatecode] working: just to the point where you can read in
+a CSV file and print some stats. You will need to get working NUM, SYM, COLS, DATA,ROW
+
+Your output should look somthing like this (this reports the means and modes
+of each column of data):
+
+```
+python3 gate.py -f ../data/auto93.csv -t stats > w2.out
+cat w2.out
+{.N: 398, Acc+: 15.57, Lbs-: 2970.42, Mpg+: 23.84}
+``` 
+
+| notes | what |
+|-------|------|
+|Don't do much| Ignore anything not assocaited with data inout or stats generation. So ignore: <br>- `like,likes,d2h,small, gate,split, bestRest`<br>- anything starting with `l.`<br>- anything any  `eg.` _NOT_ assocaited with stats|
+|Roll your own |Don't use scikitlearn or Pandas or Pytest|
+|Avoid  "?" | In the test data I've given you, there are some "?" denoting missing values|
+|Lots of filles| Divide the data up so that a group of people can work it<br>- 1 file per class<br> - 1 file for config<br>- Tests in seperate file|
+|Self-docmenting|  Make the code self-documenting. Add a "-h" flag on the command line that prints help text. For code to do that in Pythong, see  https://github.com/timm/lo/blob/main/src/tricks.py |
+|Testable| Your code needs test cases (at least 3 per student per week).<br>Add pre-commit hook for tests pass/fail.<br>At  command line, add -t<br>- `-t X` runs test X<br>- `-t all` runs all tests, sets `$?` to  #fails<br>- Test setup resets  seed, caches the config<br>- Test teardown resets config|
+|Random control| Add a `-s` flag so you can set the random number seed|
+
+## What to submit
+
+A url to your repo with a directory "hw/w2" containing `w2.out`;
+and a `src` directory containing `gate.py`.
+[^gatedoc]: https://github.com/timm/lo/blob/main/docs/gate.pdf 
+[^gatecode]: https://github.com/timm/lo/blob/main/docs/gatecode.pdf 
