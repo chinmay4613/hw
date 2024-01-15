@@ -3,12 +3,7 @@
 import sys
 import json
 import argparse
-
-DEFAULT_COHEN_SIZE = 0.35
-DEFAULT_CSV_DATA_FILE_PATH = "../data/diabetes.csv"
-DEFAULT_LOW_CLASS_FREQUENCY_KLUDGE = 1
-DEFAULT_LOW_ATTRIBUTE_FREQUENCY_KLUDGE = 2
-DEFALT_RANDOM_NUMBER_SEED = 31210
+from config import get_default_config
 
 
 def get_stats():
@@ -29,27 +24,25 @@ if __name__ == '__main__':
         parser.print_help()
         sys.exit(0)
 
-    cohen_size = DEFAULT_COHEN_SIZE
-    csv_file_name = DEFAULT_CSV_DATA_FILE_PATH
-    low_class_frequency_kludge = DEFAULT_LOW_CLASS_FREQUENCY_KLUDGE
-    low_attribute_frequency_kludge = DEFAULT_LOW_ATTRIBUTE_FREQUENCY_KLUDGE
-    random_number_seed = DEFALT_RANDOM_NUMBER_SEED
+    the = get_default_config()
 
     if args.cohen_size:
-        cohen_size = args.cohen_size
+        the.cohen = args.cohen_size
 
     if args.csv_file_name:
-        csv_file_name = args.csv_file_name
+        the.file = args.csv_file_name
 
     if args.low_class_frequency_kludge:
-        low_class_frequency_kludge = args.low_class_frequency_kludge
+        the.k = args.low_class_frequency_kludge
 
     if args.low_attribute_frequency_kludge:
-        low_attribute_frequency_kludge = args.low_attribute_frequency_kludge
+        the.m = args.low_attribute_frequency_kludge
     
     if args.random_number_seed:
-        random_number_seed = args.random_number_seed
+        the.seed = args.random_number_seed
 
+    if args.action:
+        the.todo = args.action
 
     action = args.action
 
