@@ -1,8 +1,8 @@
 
 class NUM:
     def __init__(self, s=None, n=None):
-        self.txt = s or " "
-        self.at = n or 0
+        self.txt = s if s is not None else " "
+        self.at = n if n is not None else 0
         self.n = 0
         self.mu = 0
         self.m2 = 0
@@ -25,15 +25,17 @@ class NUM:
     def div(self):
         return 0 if self.n < 2 else (self.m2 / (self.n - 1)) ** 0.5
 
-    def small(self):
-        return the["cohen"] * self.div()
-
     def norm(self, x):
         return x if x == "?" else (x - self.lo) / (self.hi - self.lo + 1E-30)
+
+    """
+    # Currently not supported
+    def small(self):
+        return the["cohen"] * self.div()
 
     def like(self, x, _):
         mu, sd = self.mid(), (self.div() + 1E-30)
         nom = 2.718 ** (-0.5 * (x - mu) ** 2 / (sd ** 2))
         denom = (sd * 2.5 + 1E-30)
         return nom / denom
-
+    """
