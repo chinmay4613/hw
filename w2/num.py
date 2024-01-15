@@ -1,5 +1,5 @@
 
-class Num:
+class NUM:
     def __init__(self, s=None, n=None):
         self.txt = s if s is not None else " "
         self.at = n if n is not None else 0
