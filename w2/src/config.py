@@ -15,13 +15,9 @@ OPTIONS:
 
 import re
 from utils import coerce
+from utils import o
 
-def oo(x):
-    print(o(x))
-    return x
 
-def o(x): 
-    return x.__class__.__name__ + "{" + (" ".join([f":{k} {v}" for k, v in sorted(x.items()) if k[0] != "_"])) + "}"
 
 """
 In this code, global settings are kept in `the` (which is parsed from `__doc__`).

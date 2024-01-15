@@ -3,6 +3,13 @@ import ast
 import fileinput
 import math
 
+def oo(x):
+    print(o(x))
+    return x
+
+def o(x):
+    return x.__class__.__name__ + "{" + (" ".join([f":{k} {v}" for k, v in sorted(x.items()) if k[0] != "_"])) + "}"
+
 def coerce(s):
     try:
         return ast.literal_eval(s)
