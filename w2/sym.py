@@ -1,7 +1,9 @@
-class SYM:
+import math
+
+class Sym:
     def __init__(self, s=None, n=None):
-        self.txt = s or " "
-        self.at = n or 0
+        self.txt = s if s is not None else " "
+        self.at = n if n is not None else 0
         self.n = 0
         self.has = {}
         self.mode = None
@@ -17,8 +19,7 @@ class SYM:
     def mid(self):
         return self.mode
 
-    def div(self):
-        e = 0
+    def div(self, e=0):
         for v in self.has.values():
             e = e - v / self.n * math.log(v / self.n, 2)
         return e
@@ -27,4 +28,5 @@ class SYM:
         return 0
 
     def like(self, x, prior):
-        return ((self.has.get(x) or 0) + the["m"] * prior) / (self.n + the["m"])
+        # Currently not supported
+        pass
