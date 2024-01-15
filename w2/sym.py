@@ -24,9 +24,11 @@ class Sym:
             e = e - v / self.n * math.log(v / self.n, 2)
         return e
 
+    """
+    # Currently not supported
     def small(self):
         return 0
 
     def like(self, x, prior):
-        # Currently not supported
         pass
+    """
