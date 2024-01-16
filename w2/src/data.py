@@ -16,7 +16,7 @@ class DATA:
                 self.add(x, fun)
 
     def add(self, t, fun=None):
-        row = t.cells if t else ROW(t)
+        row = t.cells if isinstance(t, ROW) else ROW(t)
         if self.cols:
             if fun:
                 fun(self, row)
@@ -42,9 +42,16 @@ class DATA:
             u.append(col.small())
         return ROW(u)
 
-    def stats(self, cols=None, fun=None, ndivs=2):
+
+    def stats(self, input_cols=None, fun=None, ndivs=2):
         u = {".N": len(self.rows)}
-        for col in self.cols[cols if cols else "y"]:
-            method = getattr(col, fun if fun else "mid")
-            u[col.txt] = utils.rnd(method(col), ndivs)
+        if input_cols:
+            for col in self.cols.input_cols.values():
+                method = getattr(col, fun if fun else "mid")
+                u[col.txt] = utils.rnd(method(col), ndivs)
+
+        else:
+            for col in self.cols.y.values():
+                method = getattr(col, fun if fun else "mid")
+                u[col.txt] = utils.rnd(method(col), ndivs)
         return u

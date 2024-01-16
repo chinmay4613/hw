@@ -23,14 +23,25 @@ class NUM:
             self.lo = min(x, self.lo)
             self.hi = max(x, self.hi)
 
-    def mid(self):
+    def mid(self, *args, **kwargs):
         return self.mu
 
-    def div(self):
+    def div(self, *args, **kwargs):
         return 0 if self.n < 2 else (self.m2 / (self.n - 1)) ** 0.5
 
     def norm(self, x):
         return x if x == "?" else (x - self.lo) / (self.hi - self.lo + 1E-30)
+
+    def print(self):
+        print("txt = {0}".format(self.txt))
+        print("at = {0}".format(self.at))
+        print("n = {0}".format(self.n))
+        print("mu = {0}".format(self.mu))
+        print("m2 = {0}".format(self.m2))
+        print("hi = {0}".format(self.hi))
+        print("lo = {0}".format(self.lo))
+        print("heaven = {0}\n".format(self.heaven))
+
 
     """
     # Currently not supported

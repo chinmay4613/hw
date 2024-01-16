@@ -24,7 +24,8 @@ class COLS:
                 if txt.endswith("!"):
                     self.klass = col
 
-                if txt.endswith(("!", "+", "−")):
+                if txt.endswith("!") or txt.endswith("+") or txt.endswith("-"):
+                    #if txt.endswith(("!", "+", "−")):
                     self.y[at] = col
                 else:
                     self.x[at] = col
@@ -36,3 +37,10 @@ class COLS:
             for col in cols.values():
                 col.add(row.cells[col.at])
         return row
+
+    def print(self):
+        print("x = {0}".format(self.x))
+        print("y = {0}".format(self.y))
+        print("all = {0}".format(self.all))
+        print("klass = {0}".format(self.klass))
+        print("col = {0}\n".format(self.col))

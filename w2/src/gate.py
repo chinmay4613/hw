@@ -52,4 +52,3 @@ if __name__ == '__main__':
         print(json.dumps(stats_result))
     else:
         pass
-
