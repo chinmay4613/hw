@@ -8,9 +8,13 @@ class NUM:
         self.m2 = 0
         self.hi = -1E30
         self.lo = 1E30
-        self.heaven = 0 if (s or "").endswith("-") else 1
+        if s and s.endswith("-"):
+            self.heaven = 0
+        else:
+            self.heaven = 1
 
-    def add(self, x, d):
+    def add(self, x):
+        d = None
         if x != "?":
             self.n += 1
             d = x - self.mu
