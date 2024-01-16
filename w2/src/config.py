@@ -36,8 +36,6 @@ def get_default_config():
 if __name__ == '__main__':
     # Only for testing
     the = get_default_config()
-    the.k = 22
-    the.k += 1
     print(the)
 
     print("the.cohen = {0}".format(the.cohen))

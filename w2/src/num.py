@@ -8,9 +8,13 @@ class NUM:
         self.m2 = 0
         self.hi = -1E30
         self.lo = 1E30
-        self.heaven = 0 if (s or "").endswith("-") else 1
+        if s and s.endswith("-"):
+            self.heaven = 0
+        else:
+            self.heaven = 1
 
-    def add(self, x, d):
+    def add(self, x):
+        d = None
         if x != "?":
             self.n += 1
             d = x - self.mu
@@ -19,14 +23,25 @@ class NUM:
             self.lo = min(x, self.lo)
             self.hi = max(x, self.hi)
 
-    def mid(self):
+    def mid(self, *args, **kwargs):
         return self.mu
 
-    def div(self):
+    def div(self, *args, **kwargs):
         return 0 if self.n < 2 else (self.m2 / (self.n - 1)) ** 0.5
 
     def norm(self, x):
         return x if x == "?" else (x - self.lo) / (self.hi - self.lo + 1E-30)
+
+    def print(self):
+        print("txt = {0}".format(self.txt))
+        print("at = {0}".format(self.at))
+        print("n = {0}".format(self.n))
+        print("mu = {0}".format(self.mu))
+        print("m2 = {0}".format(self.m2))
+        print("hi = {0}".format(self.hi))
+        print("lo = {0}".format(self.lo))
+        print("heaven = {0}\n".format(self.heaven))
+
 
     """
     # Currently not supported

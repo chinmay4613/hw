@@ -5,9 +5,9 @@ import json
 import argparse
 from config import get_default_config
 
+from data import DATA
 
-def get_stats():
-    pass
+the = None
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -47,8 +47,8 @@ if __name__ == '__main__':
     action = args.action
 
     if action == "stats":
-        stats_result = get_stats()
+        data_obj = DATA(the.file)
+        stats_result = data_obj.stats()
         print(json.dumps(stats_result))
     else:
         pass
-
